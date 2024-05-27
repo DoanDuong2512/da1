@@ -1,23 +1,27 @@
 package com.duong.restful_api.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.*;
 import org.springframework.stereotype.Component;
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Component
-
+@Data
+@Entity
+@Table(name = "users")
 public class User {
-
+    @Id
+    @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
     private int id ;
+
     private String name ;
+
     private String email ;
+
     private String phone ;
+
     private String address ;
+
     private String password ;
 
 }
