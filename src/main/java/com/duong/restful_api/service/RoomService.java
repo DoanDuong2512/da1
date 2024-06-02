@@ -10,6 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,5 +75,14 @@ public class RoomService {
             throw new NotFoundException("Không tìm thấy phòng");
         }
         roomRepository.delete(room);
+    }
+
+    public List<RoomDto> getAvailableRooms(LocalDateTime startDate, LocalDateTime endDate) {
+        List<Room> rooms = roomRepository.findAvailableRooms(startDate, endDate);
+        List<RoomDto> result = new ArrayList<>();
+        for (Room room : rooms) {
+            result.add(modelMapper.map(room, RoomDto.class));
+        }
+        return result;
     }
 }

@@ -1,6 +1,7 @@
 package com.duong.restful_api.controller;
 
 import com.duong.restful_api.model.dto.RoomDto;
+import com.duong.restful_api.model.request.CheckAvailableRoomRequest;
 import com.duong.restful_api.model.request.CreateRoomRequest;
 import com.duong.restful_api.model.request.UpdateRoomRequest;
 import com.duong.restful_api.service.RoomService;
@@ -48,6 +49,12 @@ public ResponseEntity<?> deleteRoom(@PathVariable int id) {
     roomService.deleteRoom(id);
     return ResponseEntity.ok("Xóa thành công");
 }
+
+    @PostMapping("/available")
+    public ResponseEntity<?> getAvailableRooms(CheckAvailableRoomRequest req) {
+        List<RoomDto> rooms = roomService.getAvailableRooms(req.getStartDate(), req.getEndDate());
+        return ResponseEntity.ok(rooms);
+    }
 }
 
 

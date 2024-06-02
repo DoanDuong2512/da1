@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Date;
 
@@ -16,9 +17,9 @@ public class Booking {
     @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
     private int id;
 
-    private Date checkInDate;
+    private LocalDateTime checkInDate;
 
-    private Date checkOutDate;
+    private LocalDateTime checkOutDate;
 
     private BigDecimal totalPrice;
 
