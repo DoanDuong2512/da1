@@ -3,10 +3,10 @@ package com.duong.restful_api.service;
 import com.duong.restful_api.entity.User;
 import com.duong.restful_api.exception.NotFoundException;
 import com.duong.restful_api.model.dto.UserDto;
-import com.duong.restful_api.model.mapper.UserMapper;
 import com.duong.restful_api.model.request.CreateUserRequest;
 import com.duong.restful_api.model.request.UpdateUserRequest;
 import com.duong.restful_api.repository.UserRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,11 +18,14 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
     public List<UserDto> getListUsers() {
         List<User> users = userRepository.findAll();
         List<UserDto> result = new ArrayList<UserDto>();
         for (User user : users) {
-            result.add(UserMapper.toUserDto(user));
+            result.add(modelMapper.map(user, UserDto.class));
         }
         return result;
     }
@@ -32,14 +35,14 @@ public class UserService {
         if (user == null) {
             throw new NotFoundException("Khong thay");
         }
-        return UserMapper.toUserDto(user);
+        return modelMapper.map(user, UserDto.class);
     }
 
     public List<UserDto> searchUser(String keyword) {
         List<User> users = userRepository.findByNameContaining(keyword);
         List<UserDto> result = new ArrayList<>();
         for (User user : users) {
-            result.add(UserMapper.toUserDto(user));
+            result.add(modelMapper.map(user, UserDto.class));
         }
         return result;
     }
@@ -52,7 +55,7 @@ public class UserService {
         user.setAddress(req.getAddress());
         user.setPassword(req.getPassword());
         userRepository.save(user);
-        return UserMapper.toUserDto(user);
+        return modelMapper.map(user, UserDto.class);
     }
 
     public UserDto updateUser(int id, UpdateUserRequest req) {
@@ -66,7 +69,7 @@ public class UserService {
         user.setAddress(req.getAddress());
         user.setPassword(req.getPassword());
         userRepository.save(user);
-        return UserMapper.toUserDto(user);
+        return modelMapper.map(user, UserDto.class);
     }
 
     public void deleteUser(int id) {
