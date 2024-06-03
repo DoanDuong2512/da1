@@ -3,6 +3,7 @@ package com.duong.restful_api.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Data
@@ -13,7 +14,7 @@ public class PetCareLog {
     @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
     private int id;
 
-    private Timestamp careDate;
+    private Date careDate;
 
     private String activity;
 

@@ -19,7 +19,7 @@ public class PetProfile {
 
     private String specialCareInstructions;
 
-    private java.math.BigDecimal weight;
+    private double weight;
     @OneToOne
     @JoinColumn(name = "pet_id")
     private Booking booking;

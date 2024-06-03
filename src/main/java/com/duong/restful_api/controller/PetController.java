@@ -50,6 +50,6 @@ public class PetController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deletePet(@PathVariable int id) {
         petService.deletePet(id);
-        return ResponseEntity.ok("Deleted successfully");
+        return ResponseEntity.ok("Xóa thành công");
     }
 }

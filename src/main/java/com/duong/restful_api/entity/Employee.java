@@ -9,7 +9,7 @@ import java.util.Collection;
 @Data
 @Entity
 @Table(name = "employees")
-public class Employee {
+public class Employee{
     @Id
     @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
     private int id;
@@ -26,7 +26,7 @@ public class Employee {
 
     private java.util.Date hireDate;
 
-    private java.math.BigDecimal salary;
+    private int salary;
 
 
     @OneToOne

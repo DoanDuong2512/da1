@@ -11,6 +11,4 @@ public class CreateRoomRequest {
     private int pricePerNight;
     private String roomNumber;
     private String size;
-
-    // Getters and Setters
 }
