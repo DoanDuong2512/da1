@@ -1,5 +1,4 @@
 package com.duong.restful_api.controller;
-
 import com.duong.restful_api.model.dto.RoomDto;
 import com.duong.restful_api.model.request.CheckAvailableRoomRequest;
 import com.duong.restful_api.model.request.CreateRoomRequest;
@@ -15,7 +14,6 @@ import java.util.List;
 public class RoomController {
     @Autowired
     private RoomService roomService;
-
     @GetMapping("")
     public ResponseEntity<?> getListRoom() {
         List<RoomDto> rooms = roomService.getListRooms();

@@ -10,6 +10,7 @@ import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -17,9 +18,9 @@ public class BookingDto {
 
     private int id;
 
-    private Date checkInDate;
+    private LocalDateTime checkInDate;
 
-    private Date checkOutDate;
+    private LocalDateTime checkOutDate;
 
     private BigDecimal totalPrice;
 

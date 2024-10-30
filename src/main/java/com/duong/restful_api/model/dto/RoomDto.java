@@ -6,11 +6,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 
 public class RoomDto {
     private int id;
-    private BigDecimal pricePerNight;
+    private int pricePerNight;
     private String roomNumber;
     private String size;
 }

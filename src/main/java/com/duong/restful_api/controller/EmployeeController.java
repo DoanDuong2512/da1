@@ -25,7 +25,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<?> searchEmployee(@RequestParam(name = "keyword", required = false, defaultValue = "") String keyword) {
+    public ResponseEntity<?> searchEmployee(@RequestParam(name = "name", required = false, defaultValue = "") String keyword) {
         List<EmployeeDto> employees = employeeService.searchEmployee(keyword);
         return ResponseEntity.ok(employees);
     }

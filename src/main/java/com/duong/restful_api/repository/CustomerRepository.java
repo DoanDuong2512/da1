@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
-    @Query("SELECT c FROM Customer c WHERE UPPER(c.firstName) LIKE UPPER(CONCAT('%', :keyword, '%')) OR UPPER(c.lastName) LIKE UPPER(CONCAT('%', :keyword, '%'))")
+    @Query("SELECT c FROM Customer c WHERE UPPER(c.phone) LIKE UPPER(CONCAT('%', :keyword, '%')) OR UPPER(c.phone) LIKE UPPER(CONCAT('%', :keyword, '%'))")
     List<Customer> findByFirstNameContainingOrLastNameContaining(@Param(value = "keyword") String keyword);
 }
